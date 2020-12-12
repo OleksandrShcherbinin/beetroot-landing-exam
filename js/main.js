@@ -115,7 +115,7 @@ document.addEventListener('scroll', parallax);
 //======================do not show "Read full info... if it's too short
 let readInfo = document.querySelectorAll('.we-do-wrapper-article-info__button');
 
-
+let text;
 readInfo.forEach(elem => elem.addEventListener('click', function () {
         let text = this.previousSibling.previousSibling;
     if (this.innerHTML === "more details") {
@@ -128,7 +128,6 @@ readInfo.forEach(elem => elem.addEventListener('click', function () {
         text.style.height = "80px";
         this.innerText = "more details";
     }
-
 }));
 
 //----------------------------------Google map---------------------------

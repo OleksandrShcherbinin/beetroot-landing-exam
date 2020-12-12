@@ -3,10 +3,6 @@
 @import "variables";
 @import "mixins";
 
-body {
-    position: relative;
-}
-
 .header {
     position: relative;
     max-width: $max;
@@ -23,8 +19,27 @@ body {
         align-items: center;
         padding: 45px 0;
         &-logo {
-            @media only screen and (max-width: 530px){
-                display: none;
+             img:last-child {
+                    display: none;
+             }
+            @media only screen and (max-width: 500px) {
+                align-self: flex-start;
+                margin-top: 10px;
+            }
+            @media only screen and (max-width: 500px) {
+                img:first-child {
+                    width: 70%;
+                }
+            }
+            @media only screen and (max-width: 400px) {
+                img:first-child {
+                    display: none;
+                }
+            }
+            @media only screen and (max-width: 399.98px) {
+                img:last-child {
+                    display: block;
+                }
             }
         }
         &__burger-menu {
@@ -42,21 +57,13 @@ body {
             &__burger-img:before,
             &__burger-img:after {
                 position: absolute;
-                top: 50px;
+                top: 30px;
                 right: 30px;
                 transform: translate(-50%, -50%);
                 width: 42px;
                 height: 5px;
                 background: $light-text;
                 cursor: pointer;
-                @media only screen and (max-height: 415px) {
-                    top: 25px;
-                    right: 10px;
-                }
-                @media only screen and (max-width: 374px) {
-                    top: 25px;
-                    right: 10px;
-                }
             }
             &__burger-img:before {
                 content: "";
@@ -75,20 +82,11 @@ body {
             &__burger-menu:checked ~ &-menu {
                 display: flex;
                 flex-direction: column;
-                align-items: center;
-                @media only screen and (max-height: 415px) {
-                    flex-direction: row;
-                    justify-content: space-evenly;
-                }
+                align-items: flex-end;
+                margin-right: 90px;
             }
             &__burger-menu:checked ~ &-menu .header-nav-menu__link{
                 font-size: 24px;
-                @media only screen and (max-height: 415px) {
-                    font-size: 10px;
-                }
-                @media only screen and (max-width: 374px) {
-                    font-size: 10px;
-                }
             }
             &__burger-menu:checked ~ &__burger-img {
                 transform: rotate(-45deg);
@@ -104,22 +102,20 @@ body {
                 display: none;
             }
         }
-
         &--scroll {
             position: fixed;
             top: 0;
             left: 50%;
             transform: translateX(-50%);
             width: 100%;
-            height: 15%;
-            background: #0f6674;
+            min-height: 10%;
+            background: #3281d5;
             padding: 0 0;
             transition: top 0.8s, left 0ms;
             -webkit-box-shadow: 10px 10px 9px 5px rgba(0, 0, 0, 0.7);
             box-shadow: 10px 10px 9px 5px rgba(0, 0, 0, 0.7);
             z-index: 999;
         }
-
         @include menu(flex);
         @media only screen and (max-width: 899.98px) {
             @include menu(none);
@@ -293,15 +289,10 @@ body {
                     height: 80px;
                 }
                 &__button {
-                    width: 190px;
-                    height: 50px;
-                    border: 1px solid $dark-text;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    @include text($dark-text, ("Gotham-Book", sans-serif), 14px, 400, uppercase);
-                    cursor: pointer;
-                    margin: 40px 0 60px 0;
+                    @include button(40px 0 60px 0);
+                }
+                &__button:hover {
+                    background-color: #7d5ffa;
                 }
                 &__location {
                     @include text($dark-text, ("Open Sans", sans-serif), 18px, 400, unset);
@@ -440,6 +431,10 @@ body {
             &-info * {
                 margin: 0 30px 30px 20px;
             }
+            &-info-author-name h5 {
+                margin-left: 20px;
+                margin-bottom: 5px;
+            }
         }
         @media only screen and (max-width: 567px) {
             &-slide > * {
@@ -556,15 +551,10 @@ body {
         }
     }
     &__button {
-        width: 190px;
-        height: 50px;
-        border: 1px solid $dark-text;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 60px 0 140px 0;
-        @include text($dark-text, ("Gotham-Book", sans-serif), 14px, 400, uppercase);
-        cursor: pointer;
+        @include button(60px 0 140px 0);
+    }
+    &__button:hover {
+        background-color: #7d5ffa;
     }
 }
 .map {
@@ -640,18 +630,21 @@ body {
             &__text {
                 font-size: 14px;
                 font-weight: 400;
-                margin: 0 0;
-            }
-            &__line {
-                height: 20px;
-                width: 1px;
-                background-color: #ffffff;
-                opacity: 0.5;
-                margin: 0 20px;
+                margin: 0 30px 0 0;
             }
             &__made-in {
+                position: relative;
                 font-weight: 300;
                 margin: 0 0;
+            }
+            &__made-in:before {
+                position: absolute;
+                top: 0;
+                left: -15px;
+                content: "";
+                height: 100%;
+                opacity: 0.5;
+                border-right: 1px solid $light-text;
             }
         }
     }
@@ -738,6 +731,9 @@ body {
                         height: 30px;
                         width: 100%;
                     }
+                }
+                &__button:hover {
+                    background-color: #7d5ffa;
                 }
             }
         }
