@@ -973,6 +973,11 @@ template {
 .we-do-wrapper-article-info__button:hover {
   background-color: #7d5ffa;
 }
+@media (hover: none) {
+  .we-do-wrapper-article-info__button:active {
+    background-color: #7d5ffa;
+  }
+}
 .we-do-wrapper-article-info__location {
   color: #2c4058;
   font-family: "Open Sans", sans-serif;

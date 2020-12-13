@@ -294,6 +294,11 @@
                 &__button:hover {
                     background-color: #7d5ffa;
                 }
+                @media (hover: none) {
+                    &__button:active {
+                        background-color: #7d5ffa;
+                    }
+                }
                 &__location {
                     @include text($dark-text, ("Open Sans", sans-serif), 18px, 400, unset);
                 }
