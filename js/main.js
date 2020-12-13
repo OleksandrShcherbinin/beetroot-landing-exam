@@ -142,12 +142,14 @@ readInfo.forEach(elem => elem.addEventListener('click', function () {
         let text = this.previousSibling.previousSibling;
     if (this.children[0].innerText.toLowerCase() === "more details") {
         this.children[0].innerText = "less details";
+        this.children[0].style.backgroundColor = "transparent";
         text.style.overflow = "visible";
         text.style.height = "100%";
     } else if (this.children[0].innerText.toLowerCase() === "less details") {
         text.style.overflow = "hidden";
         text.style.height = "80px";
         this.children[0].innerText = "more details";
+        this.children[0].style.backgroundColor = "transparent";
         text.previousSibling.previousSibling.scrollIntoView();
     }
 }));
