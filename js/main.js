@@ -1,19 +1,41 @@
 //-------------header menu scroll
-$(function () {
-    $('.header-nav-menu').on('click', 'a', function (event) {
-        event.preventDefault();
-        let anchor = $(this).attr('href');
-        let top = $(anchor).offset().top;
-        $('body,html').animate({scrollTop: top}, 500)
-    });
-    $('.footer-nav-menu').on('click', 'a', function (event) {
-        event.preventDefault();
-        let anchor = $(this).attr('href');
-        let top = $(anchor).offset().top;
-        $('body,html').animate({scrollTop: top}, 500)
-    });
+// $(function () {
+//     $('.header-nav-menu').on('click', 'a', function (event) {
+//         event.preventDefault();
+//         let anchor = $(this).attr('href');
+//         let top = $(anchor).offset().top;
+//         $('body,html').animate({scrollTop: top}, 500)
+//     });
+//     $('.footer-nav-menu').on('click', 'a', function (event) {
+//         event.preventDefault();
+//         let anchor = $(this).attr('href');
+//         let top = $(anchor).offset().top;
+//         $('body,html').animate({scrollTop: top}, 500)
+//     });
+//
+// });
+function scrollToAnchor(x, y) {
+    window.scroll(x, y)
+}
 
-});
+document.querySelectorAll('.header-nav-menu__link, .footer-nav-menu__link').forEach(elem => elem.addEventListener('click', function (event) {
+    event.preventDefault();
+    let startPosition = this.getBoundingClientRect();
+    let elemAnchor = document.querySelector(this.getAttribute('href'));
+    let finishPosition = elemAnchor.getBoundingClientRect();
+
+    if (finishPosition.top > startPosition.top) {
+        for (let i = startPosition.top; i <= finishPosition.top; i++) {
+            setTimeout(function () {}, i * 3000);
+            scrollToAnchor(finishPosition.left, i);
+        }
+    } else if (finishPosition.top < startPosition.top) {
+        for (let i = startPosition.top; i >= finishPosition.top; i--) {
+            setTimeout(function () {}, i * 3000);
+            scrollToAnchor(finishPosition.left, i);
+        }
+    }
+}));
 //--------------------------SMALL arrow down
 $(function () {
     $('.header-arrow__down').on('click', function (event) {
@@ -68,13 +90,13 @@ $('.news-slider').slick(
 
         responsive: [
             {
-                breakpoint: 1400,
+                breakpoint: 1200,
                 settings: {
                     slidesToShow: 2,
                     speed: 1000,
                 }            },
             {
-                breakpoint: 8,
+                breakpoint: 667,
                 settings: {
                     slidesToShow: 1,
                     speed: 1000,
@@ -118,15 +140,15 @@ let readInfo = document.querySelectorAll('.we-do-wrapper-article-info__button');
 let text;
 readInfo.forEach(elem => elem.addEventListener('click', function () {
         let text = this.previousSibling.previousSibling;
-    if (this.innerHTML === "more details") {
-            console.log(text);
-        this.innerText = "less details";
+    if (this.children[0].innerText.toLowerCase() === "more details") {
+        this.children[0].innerText = "less details";
         text.style.overflow = "visible";
         text.style.height = "100%";
-    } else if (this.innerHTML === "less details") {
+    } else if (this.children[0].innerText.toLowerCase() === "less details") {
         text.style.overflow = "hidden";
         text.style.height = "80px";
-        this.innerText = "more details";
+        this.children[0].innerText = "more details";
+        text.previousSibling.previousSibling.scrollIntoView();
     }
 }));
 
