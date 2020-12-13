@@ -970,6 +970,9 @@ template {
   text-transform: uppercase;
   cursor: pointer;
 }
+.we-do-wrapper-article-info__button a {
+  color: #2c4058;
+}
 @media (hover: hover) {
   .we-do-wrapper-article-info__button:hover {
     background-color: #7d5ffa;
