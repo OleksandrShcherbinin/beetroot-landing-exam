@@ -970,10 +970,12 @@ template {
   text-transform: uppercase;
   cursor: pointer;
 }
-.we-do-wrapper-article-info__button:hover {
-  background-color: #7d5ffa;
+@media (hover: hover) {
+  .we-do-wrapper-article-info__button:hover {
+    background-color: #7d5ffa;
+  }
 }
-@media (hover: none) {
+@media (hover: none) and (pointer: coarse) {
   .we-do-wrapper-article-info__button:active {
     background-color: #7d5ffa;
   }
