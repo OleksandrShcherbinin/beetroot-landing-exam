@@ -119,6 +119,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    display: -webkit-flex;
+    -webkit-align-items: center;
     margin: $margin;
     @include text($dark-text, ("Gotham-Book", sans-serif), 14px, 400, uppercase);
     cursor: pointer;

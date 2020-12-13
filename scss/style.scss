@@ -720,6 +720,11 @@
                     width: 50%;
                     height: 50px;
                     cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    display: -webkit-flex;
+                    -webkit-align-items: center;
                     background-color: transparent;
                     border: 1px solid $dark-text;
                     @media only screen and (max-width: 767px){
