@@ -14,27 +14,14 @@
 //     });
 //
 // });
-function scrollToAnchor(x, y) {
-    window.scroll(x, y)
-}
 
 document.querySelectorAll('.header-nav-menu__link, .footer-nav-menu__link').forEach(elem => elem.addEventListener('click', function (event) {
     event.preventDefault();
-    let startPosition = this.getBoundingClientRect();
-    let elemAnchor = document.querySelector(this.getAttribute('href'));
-    let finishPosition = elemAnchor.getBoundingClientRect();
 
-    if (finishPosition.top > startPosition.top) {
-        for (let i = startPosition.top; i <= finishPosition.top; i++) {
-            setTimeout(function () {}, i * 3000);
-            scrollToAnchor(finishPosition.left, i);
-        }
-    } else if (finishPosition.top < startPosition.top) {
-        for (let i = startPosition.top; i >= finishPosition.top; i--) {
-            setTimeout(function () {}, i * 3000);
-            scrollToAnchor(finishPosition.left, i);
-        }
-    }
+    let elemAnchor = document.querySelector(this.getAttribute('href'));
+
+    elemAnchor.scrollIntoView({block: "center", behavior: "smooth"});
+
 }));
 //--------------------------SMALL arrow down
 $(function () {
@@ -142,15 +129,13 @@ readInfo.forEach(elem => elem.addEventListener('click', function () {
         let text = this.previousSibling.previousSibling;
     if (this.children[0].innerText.toLowerCase() === "more details") {
         this.children[0].innerText = "less details";
-        this.children[0].style.backgroundColor = "transparent";
         text.style.overflow = "visible";
         text.style.height = "100%";
     } else if (this.children[0].innerText.toLowerCase() === "less details") {
         text.style.overflow = "hidden";
         text.style.height = "80px";
         this.children[0].innerText = "more details";
-        this.children[0].style.backgroundColor = "transparent";
-        text.previousSibling.previousSibling.scrollIntoView();
+        text.previousSibling.previousSibling.scrollIntoView({behavior: "smooth"});
     }
 }));
 
